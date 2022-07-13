@@ -1,12 +1,12 @@
-package com.akira.bank.accounts.controller;
+package com.akira.bank.loans.controller;
 
 /*
 *  @author by Akira Nadhira
 * */
 
-import com.akira.bank.accounts.model.Accounts;
-import com.akira.bank.accounts.model.Customer;
-import com.akira.bank.accounts.repository.AccountsRepository;
+import com.akira.bank.loans.model.Accounts;
+import com.akira.bank.loans.model.Customer;
+import com.akira.bank.loans.repository.AccountsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

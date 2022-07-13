@@ -1,4 +1,4 @@
-package com.akira.bank.accounts;
+package com.akira.bank.loans;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

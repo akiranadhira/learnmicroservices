@@ -1,6 +1,6 @@
-package com.akira.bank.accounts.repository;
+package com.akira.bank.loans.repository;
 
-import com.akira.bank.accounts.model.Accounts;
+import com.akira.bank.loans.model.Accounts;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
