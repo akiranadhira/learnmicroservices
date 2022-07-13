@@ -1,11 +1,13 @@
 package com.akira.bank.loans.repository;
 
-import com.akira.bank.loans.model.Accounts;
+import com.akira.bank.loans.model.Loans;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface AccountsRepository extends CrudRepository<Accounts, Long> {
+import java.util.List;
 
-    Accounts findByCustomerId(int customerId);
+@Repository
+public interface LoansRepository extends CrudRepository<Loans, Long> {
+
+    List<Loans> findByCustomerIdOrderByStartDateDesc(int customerId);
 }

@@ -8,12 +8,12 @@ import org.springframework.context.annotation.ComponentScans;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScans({ @ComponentScan("com.akira.bank.accounts.controller")})
-@EnableJpaRepositories("com.akira.bank.accounts.repository")
-@EntityScan("com.akira.bank.accounts.model")
-public class AccountsApplication {
+@ComponentScans({ @ComponentScan("com.akira.bank.loans.controller")})
+@EnableJpaRepositories("com.akira.bank.loans.repository")
+@EntityScan("com.akira.bank.loans.model")
+public class LoansApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AccountsApplication.class, args);
+        SpringApplication.run(LoansApplication.class, args);
     }
 }

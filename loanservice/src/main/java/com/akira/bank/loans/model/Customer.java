@@ -1,4 +1,4 @@
-package com.akira.bank.accounts.model;
+package com.akira.bank.loans.model;
 
 import lombok.Getter;
 import lombok.Setter;

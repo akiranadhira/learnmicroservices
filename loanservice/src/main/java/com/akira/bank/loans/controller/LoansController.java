@@ -4,25 +4,27 @@ package com.akira.bank.loans.controller;
 *  @author by Akira Nadhira
 * */
 
-import com.akira.bank.loans.model.Accounts;
+import com.akira.bank.loans.model.Loans;
 import com.akira.bank.loans.model.Customer;
-import com.akira.bank.loans.repository.AccountsRepository;
+import com.akira.bank.loans.repository.LoansRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-public class AccountsController {
+public class LoansController {
 
     @Autowired
-    private AccountsRepository accountsRepository;
+    private LoansRepository loansRepository;
 
-    @PostMapping("/myAccount")
-    public Accounts getAccountDetails(@RequestBody Customer customer) {
-        Accounts accounts = accountsRepository.findByCustomerId(customer.getCustomerId());
-        if (accounts != null) {
-            return accounts;
+    @PostMapping("/myLoans")
+    public List<Loans> getLoansDetails(@RequestBody Customer customer) {
+        List<Loans> loans = loansRepository.findByCustomerIdOrderByStartDateDesc(customer.getCustomerId());
+        if (loans != null) {
+            return loans;
         } else {
             return null;
         }

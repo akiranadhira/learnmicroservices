@@ -4,29 +4,38 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
 @ToString
-public class Accounts {
+public class Loans {
 
     @Column(name = "customer_id")
     private int customerId;
 
-    @Column(name = "account_no")
     @Id
-    private long accountNo;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "loan_no")
+    private int loanNo;
 
-    @Column(name = "account_type")
-    private String accountType;
+    @Column(name = "start_date")
+    private Date startDate;
 
-    @Column(name = "branch_addr")
-    private String branchAddress;
+    @Column(name = "loan_type")
+    private String loanType;
+
+    @Column(name = "total_loan")
+    private int totalLoan;
+
+    @Column(name = "paid_amount")
+    private int paidAmount;
+
+    @Column(name = "outstanding_amount")
+    private int outstandingAmount;
 
     @Column(name = "create_date")
     private LocalDate createDate;
