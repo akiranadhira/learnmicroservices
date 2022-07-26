@@ -1,4 +1,4 @@
-package com.akira.bank.accounts.model;
+package com.akira.bank.cards.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,20 +13,20 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
-public class Accounts {
+public class Customer {
 
     @Column(name = "customer_id")
+    @Id
     private int customerId;
 
-    @Column(name = "account_no")
-    @Id
-    private long accountNo;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "account_type")
-    private String accountType;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "branch_addr")
-    private String branchAddress;
+    @Column(name = "mobile_no")
+    private String mobileNo;
 
     @Column(name = "create_date")
     private LocalDate createDate;

@@ -11,6 +11,7 @@
 	<groupId>com.akira</groupId>
 	<artifactId>helloservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>helloservice</name>
 	<description>Hello Demo project for Spring Boot</description>
 	<properties>
