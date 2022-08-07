@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  accountservice:
+    image: akiranadhira/accountservice:latest
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    ports:
+      - "8080:8080"
+    networks:
+      - akiranadhira-network
+
+  loanservice:
+    image: akiranadhira/loanservice:latest
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    ports:
+      - "8090:8090"
+    networks:
+      - akiranadhira-network
+
+  cardservice:
+    image: akiranadhira/cardservice:latest
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    ports:
+      - "8100:8100"
+    networks:
+      - akiranadhira-network
+
+networks:
+  akiranadhira-network:
+

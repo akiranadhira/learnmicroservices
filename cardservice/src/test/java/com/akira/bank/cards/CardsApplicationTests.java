@@ -1,10 +1,10 @@
-package com.akira.helloservice;
+package com.akira.bank.cards;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HelloserviceApplicationTests {
+class CardsApplicationTests {
 
 	@Test
 	void contextLoads() {
