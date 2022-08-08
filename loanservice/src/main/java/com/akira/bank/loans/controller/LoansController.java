@@ -42,7 +42,7 @@ public class LoansController {
     @GetMapping("loans/properties")
     public String getPropertyDetails() throws JsonProcessingException {
         ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        Properties properties = new Properties(loansServiceConfig.getMsg(), loansServiceConfig.getBuildVersion(), loansServiceConfig.getMailDetails(),
+        Properties properties = new Properties(loansServiceConfig.getMessage(), loansServiceConfig.getBuildVersion(), loansServiceConfig.getMailDetails(),
                 loansServiceConfig.getActiveBranches());
         String jsonString = objectWriter.writeValueAsString(properties);
 

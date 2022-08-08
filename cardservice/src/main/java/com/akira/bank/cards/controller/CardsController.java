@@ -42,7 +42,7 @@ public class CardsController {
     @GetMapping("cards/properties")
     public String getPropertyDetails() throws JsonProcessingException {
         ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        Properties properties = new Properties(cardsServiceConfig.getMsg(), cardsServiceConfig.getBuildVersion(), cardsServiceConfig.getMailDetails(),
+        Properties properties = new Properties(cardsServiceConfig.getMessage(), cardsServiceConfig.getBuildVersion(), cardsServiceConfig.getMailDetails(),
                 cardsServiceConfig.getActiveBranches());
         String jsonString = objectWriter.writeValueAsString(properties);
 

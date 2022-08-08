@@ -1,0 +1,82 @@
+version: "3.8"
+
+services:
+  configserver:
+    image: akiranadhira/configserver:latest
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    ports:
+      - "8070:8070"
+    networks:
+      - akiranadhira-network
+
+  accountservice:
+    image: akiranadhira/accountservice:latest
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    ports:
+      - "8080:8080"
+    networks:
+      - akiranadhira-network
+    depends_on:
+      - configserver
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8070/
+
+  loanservice:
+    image: akiranadhira/loanservice:latest
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    ports:
+      - "8090:8090"
+    networks:
+      - akiranadhira-network
+    depends_on:
+      - configserver
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8070/
+
+
+  cardservice:
+    image: akiranadhira/cardservice:latest
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    ports:
+      - "8100:8100"
+    networks:
+      - akiranadhira-network
+    depends_on:
+      - configserver
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8070/
+
+
+networks:
+  akiranadhira-network:
+

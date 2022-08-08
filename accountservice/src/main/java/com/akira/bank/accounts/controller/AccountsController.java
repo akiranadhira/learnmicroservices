@@ -40,7 +40,7 @@ public class AccountsController {
     @GetMapping("account/properties")
     public String getPropertyDetails() throws JsonProcessingException {
         ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        Properties properties = new Properties(accountsServiceConfig.getMsg(), accountsServiceConfig.getBuildVersion(), accountsServiceConfig.getMailDetails(),
+        Properties properties = new Properties(accountsServiceConfig.getMessage(), accountsServiceConfig.getBuildVersion(), accountsServiceConfig.getMailDetails(),
                 accountsServiceConfig.getActiveBranches());
         String jsonString = objectWriter.writeValueAsString(properties);
 
