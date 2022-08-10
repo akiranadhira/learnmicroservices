@@ -12,6 +12,27 @@ services:
     networks:
       - akiranadhira-network
 
+  eurekaserver:
+    image: akiranadhira/eurekaserver:latest
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    ports:
+      - "8060:8060"
+    networks:
+      - akiranadhira-network
+    depends_on:
+      - configserver
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8070/
+
   accountservice:
     image: akiranadhira/accountservice:latest
     deploy:
@@ -29,9 +50,11 @@ services:
       - akiranadhira-network
     depends_on:
       - configserver
+      - eurekaserver
     environment:
       SPRING_PROFILES_ACTIVE: prod
       SPRING_CONFIG_IMPORT: configserver:http://configserver:8070/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8060/eureka/
 
   loanservice:
     image: akiranadhira/loanservice:latest
@@ -50,9 +73,11 @@ services:
       - akiranadhira-network
     depends_on:
       - configserver
+      - eurekaserver
     environment:
       SPRING_PROFILES_ACTIVE: prod
       SPRING_CONFIG_IMPORT: configserver:http://configserver:8070/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8060/eureka/
 
 
   cardservice:
@@ -72,10 +97,11 @@ services:
       - akiranadhira-network
     depends_on:
       - configserver
+      - eurekaserver
     environment:
       SPRING_PROFILES_ACTIVE: prod
       SPRING_CONFIG_IMPORT: configserver:http://configserver:8070/
-
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8060/eureka/
 
 networks:
   akiranadhira-network:
